@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font-style</title>
+    <!-- (1)設定google font字體 -->
+    <!-- link整行從google font網站複製（第三個） -->
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&family=Pangolin&display=swap"
+        rel="stylesheet">
+    <style>
+        html {
+            font-style: 16px;
+        }
+
+        /* :root可以選擇到html */
+        :root {
+            font-style: 16px;
+        }
+
+        /*為這份文件設定字形*/
+        body {
+            font-family: "微軟正黑體", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, ;
+
+        }
+
+        .font-style {
+            /* 設定字型家族
+        有順序：先使用微軟正黑體，沒有再使用Impact... */
+            font-family: "微軟正黑體", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, ;
+            /* 字體大小: px、em、rem */
+            font-size: 30px;
+            /* 設定斜體 */
+            font-style: italic;
+            /* 設定粗體 */
+            font-weight: bold;
+            /* 設定字體變大寫，第一個字母較大(只適用英文) */
+            font-variant: small-caps;
+            /* 縮寫 */
+            /* 30px / 40px => 字體大小 / 行高 (斜線不能省略) */
+            font: small-caps bold italic 30px/40px 'Arial Narrow Bold', sans-serif;
+        }
+
+        /* 自訂義字體 */
+        /* 1.先自訂義字型，需要字體檔案 */
+        @font-face {
+            font-family: "myfont";
+            src: url("./waltograph42.otf"), url("./Adine\ Kirnberg.ttf"), url("./Adine\ Kirnberg.ttf")
+        }
+
+        /* 2.使用自訂義的字體 */
+        .font-set {
+            font-family: "myfont";
+            font-style: 50px;
+        }
+
+        /* (2)使用google font */
+        .google-font {
+            /* 下面這行從google font網站複製 */
+            font-family: "Miltonian Tattoo", serif;
+        }
+
+        .text-style {
+            /* 文字對齊 left、center、right */
+            text-align: left;
+            /* none、underline、overline、line-through */
+            text-decoration: underline;
+            /* 縮排 */
+            text-indent: 2rem;
+            /* 文字大小寫轉換 */
+            /* capitalize是每個單字第一個字大寫 */
+            /* uppercase是全部字母大寫 */
+            text-transform: uppercase;
+            /* 文字陰影：
+            水平位移(右+ 左-) 垂直位移(下+ 上-) 陰影模糊半徑 顏色
+            顏色可以對調到最前面
+             */
+            text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.5);
+            /* 字母和字母之間的距離（中文也適用） */
+            letter-spacing: 5px;
+            /* 單字和單字間的距離，必須要有空格才會有作用（中文很難有空格，比較適合英文） */
+            word-spacing: 1rem;
+            /* 行高：行跟行之間的距離 
+            可用px、em、rem*/
+            line-height: 36px;
+            /* 行高也可用數字表示倍數，以字體大小為倍數 (字體大小預設為16)，故下方為16*2 */
+            line-height: 2;
+        }
+
+        .multi-text-shadow {
+            /* 可直接打fz4rem按enter就會得到下面 */
+            font-size: 4rem;
+            text-shadow:
+                1px 1px 1px rgba(255, 255, 255, 1),
+                2px 2px 2px rgba(255, 255, 0, 1),
+                3px 3px 3px rgba(255, 150, 0, 1),
+                /* 最後一個結尾要用分號(;) */
+                4px 4px 4px rgba(255, 0, 0, 1);
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>1.Font樣式設定</h1>
+    <p class="font-style">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eaque recusandae eum ratione
+        sequi labore consequuntur iure voluptatum eligendi minima molestias ullam, reprehenderit porro quo, corporis
+        aliquam illo, odit laudantium?</p>
+    <hr>
+
+    <h2>自訂字型</h2>
+    <p class="font-set">Lorem ipsum dolor sit amet.</p>
+
+    <h2>Google Fonts</h2>
+    <p class="google-font">Lorem ipsum dolor sit amet.</p>
+
+    <hr>
+
+    <h1>2.Text樣式設定</h1>
+    <p class="text-style">烏日時尚。
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis repellendus, adipisci
+        nesciunt architecto
+        minus, sunt ea, error eaque quia ducimus excepturi aliquid amet quidem est illo eius. Recusandae, deserunt
+        nostrum.</p>
+
+    <h2>多重文字陰影</h2>
+    <p class="multi-text-shadow">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure, ea sunt quis vitae eius
+        pariatur temporibus est ducimus nostrum autem blanditiis labore, doloremque quae beatae facilis consequuntur
+        aliquam aperiam dicta!</p>
+
+    <hr>
+    <h1>3.rem與em差異</h1>
+    <ul>
+        <li>文字預設字體大小為16px，也就是1rem</li>
+        <li> root指根元素html`,:root</li>
+    </ul>
+    <h2>REM</h2>
+    <p>rem為root預設font-size的倍數（為預設16px）</p>
+    <div style="font-size:1rem">font
+        <div style="font-size:2rem">font
+            <div style="font-size:3rem">font</div>
+        </div>
+    </div>
+
+    <h2>EM</h2>
+    <p>em 可能為父層或祖先層font-size的倍數
+        父層若有設定字體大小，以它為基準；
+        若無設定則會繼續往外面找，一直找到根元素html，也就是16px。
+    </p>
+    <!-- 看外層是多少，乘以外層的倍數 -->
+    <div style="font-size:1em">font
+        <div style="font-size:2em">font
+            <div style="font-size:3em">font</div>
+        </div>
+    </div>
+</body>
+
+</html>

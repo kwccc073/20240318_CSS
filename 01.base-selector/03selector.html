@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選擇器</title>
+    <style>
+        /*  class選擇器)(id選擇器改#開頭，2~5相同)
+        1. 以 . 開頭
+        2. 只允許使用英文、數字與-和_去命名
+        3. 以字元開頭，不能用數字開頭
+            如 .1color不行，因為數字開頭
+            .text-color可以
+            .text_color可以
+        4. 可以用中文命名，但不建議
+        5. 有區分大小寫
+        */
+        .color {
+            color: blueviolet;
+        }
+
+        .text {
+            font-size: 50px;
+        }
+
+        li {
+            color: green;
+        }
+
+        .active {
+            color: red;
+        }
+
+        .font {
+            font-size: 30px;
+            /* 粗體 */
+            font-weight: bolder;
+        }
+
+        /* id選擇器 */
+        #header {
+            color: lightcoral;
+        }
+
+        #main {
+            color: lightgreen;
+        }
+
+        #sidebar {
+            color: lightblue;
+        }
+
+        #footer {
+            color: deeppink;
+        }
+
+        #header,
+        #main,
+        #sidebar,
+        #footer {
+            font-size: 1.5rem;
+        }
+
+        /* 半形空白為後代選擇器，選擇到兒子與孫子們 */
+        /* nav後面的p都會被選到 */
+        nav p {
+            color: blue;
+        }
+
+        /* > 為子代選擇器，只選擇到兒子（只選擇一層）*/
+        /* 即nav後的第一層p*/
+        nav>p {
+            color: red;
+        }
+
+        /* *為全域選擇器，又叫通用選擇器 (除了偽元素::before、::after)
+        指這份網頁全部的元素都選*/
+        * {
+            /* 斜體 */
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS選擇器</h1>
+    <p>CSS有非常多選擇器，幫助我們在撰寫樣式時，選擇到目標。</p>
+    <!-- class -->
+
+    <!-- 可命名多個class名稱，如下面的color、text -->
+    <h1 class="color text">class 選擇器</h1>
+    <p>class具有重複使用的特性，是CSS使用率最高的選擇器</p>
+
+    <h2>使用場景</h2>
+    <h3>1.相同元素但需要不同外觀時</h3>
+    <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li class="active">Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+    </ul>
+    <h3>2. 重複使用時</h3>
+    <!-- em是斜體 -->
+    <p>Lorem ipsum <a href="#" class="font">dolor</a>, sit amet consectetur adipisicing elit. Minus iusto excepturi
+        harum temporibus doloribus labore ullam, eos asperiores cupiditate fugiat ratione quasi recusandae quod
+        repellendus <em class="font">dolores</em>. Repellendus nemo odit molestias!</p>
+    <hr>
+
+    <h1>id 選擇器</h1>
+    <ul>
+        <li>一份文件裡面只允許獨一無二的id名稱，就像身分證不能重複。</li>
+        <li>id常被用作網頁區塊名稱或者是Javescript、JQuery操縱元素的選擇器。</li>
+        <li>id是最簡單、最快速、最直接的選擇方式。</li>
+    </ul>
+    <div id="header">header區塊</div>
+    <div id="main">main區塊</div>
+    <div id="sidebar">sidebar區塊</div>
+    <div id="footer">footer區塊</div>
+    <hr>
+
+    <h1>後代、子代選擇器</h1>
+    <nav>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+    </nav>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- link: 引入其他檔案或連結 -->
+    <!-- 第二種方式: 用外部樣式表link起來 -->
+    <!--1. 可以給其他文件使用，不需要在每個文件寫同樣的樣式
+        2. html檔案較小，維護較容易-->
+    <link rel="stylesheet" href="./style1.css">
+    <!-- 第一種方式：用style標籤寫這份網頁的樣式(CSS) -->
+    <!-- CSS只有多行註解(/* */)，不能用// -->
+    <style>
+        /* 寫法如下：
+            選擇器{
+            屬性: 值;
+        }
+        */
+        /* 若後面有跟前面一樣的屬性，則後面會覆蓋前面 */
+
+        /* h1為一種標籤選擇器 */
+        h1 {
+            /* 文字顏色 */
+            color: red;
+            background: yellow;
+            /* 可打fz再點選font-size，這個是文字大小 */
+            font-size: 40px;
+        }
+
+        p {
+            color: blueviolet;
+        }
+
+        /* 群組選擇器，以逗點分開 */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+
+            color: green !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 標籤選擇器 -->
+    <!-- 第三種方式：行內樣式，為優先權最高(若其他地方沒有 !important的話) -->
+    <h1 style="color: brown;">Title1</h1>
+    <p>來電解放言論慢慢趨勢名單預防改進印度顯。</p>
+
+    <h1>Title1</h1>
+    <p>來電解放言論慢慢趨勢名單預防改進印度顯。</p>
+
+    <h1>Title1</h1>
+    <p>來電解放言論慢慢趨勢名單預防改進印度顯。</p>
+
+    <h1>Title1</h1>
+    <p>來電解放言論慢慢趨勢名單預防改進印度顯。</p>
+
+    <hr>
+
+    <!-- 群組選擇器 -->
+    <h1>Hello World</h1>
+    <h2>Hello World</h2>
+    <h3>Hello World</h3>
+    <h4>Hello World</h4>
+    <h5>Hello World</h5>
+    <h6>Hello World</h6>
+</body>
+
+</html>

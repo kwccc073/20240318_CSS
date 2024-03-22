@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+    <style>
+        /* 畫盒子方法 */
+        .box {
+            width: 600px;
+            height: 600px;
+            border: 5px solid #fff;
+            margin: 100px auto;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            /* 字的設定 */
+            font-size: 3rem;
+            color: yellow;
+            text-shadow: 0px 0px 3px rgb(0, 0, 0);
+        }
+
+        /* 背景顏色設定 background-color */
+        .bg-color {
+            background: #faa;
+        }
+
+        /* 背景圖片設定 background-imge */
+        /* 預設會重複、填滿 */
+        .bg-img {
+            /* 假圖是picsum */
+            background-image: url("https://picsum.photos/100/100/?random=1");
+        }
+
+        /* 指定圖片橫向重複background-repeat: repeat-x */
+        .bg-repeat-x {
+            background-repeat: repeat-x;
+        }
+
+        /* 指定圖片直向重複background-repeat: repeat-y */
+        .bg-repeat-y {
+            background-repeat: repeat-y;
+        }
+
+        /* 圖片不重複 background-repeat: no-repeat*/
+        .bg-no-repeat {
+            background-repeat: no-repeat;
+        }
+
+        /* 圖片尺寸設定 background-size: */
+        .bg-size {
+            background-image: url("https://picsum.photos/300/200/?random=10");
+            background-repeat: no-repeat;
+            /* auto 預設 */
+            /* contain 背景圖片等比例縮放，直到有一邊碰到盒子，另一邊則停止縮放
+            cover 背景圖片等比例縮放，背景圖片會填滿box，但超出的會被裁切*/
+            background-size: cover;
+            /* 百分比 */
+            /* 單值是寬度縮放，高度會被設定成auto
+            雙值是的第一個值是寬度，第二個值是高度 */
+            background-size: 50% 50%;
+        }
+
+        /* 圖片位置設定 background-position:*/
+        .bg-position {
+            /* 
+            雙值=>第一個是水平，第二個是垂直
+            關鍵字-1：left, center, right <=> 0%、50%、100%
+            關鍵字-2：top, center, bottom <=> 0%、50%、100%
+            （關鍵字前後順序可對調，百分比不可）
+            */
+            background-position: center center;
+            /* 可以負值，下面數值是往左上角移動*/
+            background-position: -50px -50px;
+            /* 單值上右下左的寫法，另一個值會被設定成center */
+            background-position: center;
+        }
+
+        /* 皮卡丘範例 */
+        .pikachu {
+            width: 600px;
+            height: 300px;
+            border: 5px solid #fff;
+            margin: 100px auto;
+
+            font-size: 3rem;
+            color: red;
+            /* 數值是0的時候可以不用加px */
+            text-shadow: 0 0 3px rgb(0, 0, 0);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+            background-image: url(./pikachu.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 -100px;
+        }
+
+        /* 縮寫規則 
+        1.background-size一定要緊接在background-position之後，一定要用斜線(/)隔開
+        2.設定background-position雙值時，建議先設定水平，再設定垂直
+        */
+        .bg-abbr {
+            background: #ffa url(./pikachu.png) no-repeat center center /cover
+                /* 錯誤寫法：
+            background-image:#ffa url(./pikachu.png) no-repeat center center /cover
+            因為background-image為單一屬性，不是縮寫
+            */
+        }
+
+        /* 
+        多張背景設定
+        1. 圖片排列順序，由上而下排列，上方的會蓋住下方的
+        2. 第一張圖會在最上層，第二張為第二層，依此類推，最後一張在最底層。
+        */
+        .bg-three {
+            /*  */
+            background-image: url("https://picsum.photos/600/100/?random=1"),
+                url("https://picsum.photos/600/400/?random=2"),
+                url("https://picsum.photos/600/100/?random=1");
+            /* 第一個值對第一張，第二個值對第二張，依此類推*/
+            background-repeat: no-repeat, no-repeat, no-repeat;
+            /* left 100px表示 靠左、向下100，詳見bg-position */
+            background-position: left top, left 100px, left bottom;
+
+            /* 縮寫版 */
+            background:
+                url("https://picsum.photos/600/100/?random=1") no-repeat left top,
+                url("https://picsum.photos/600/400/?random=2") no-repeat left 100px,
+                url("https://picsum.photos/600/100/?random=1") no-repeat left bottom;
+        }
+
+        /* 
+        線性漸層 background-image: linear-gradient(顏色,顏色…)
+        1. background、background-image都可以設定漸層，漸層是背景圖片的一種
+        2. 0deg = 360deg = to top ↑
+            90deg = to right →
+            180deg = to bottom ↓
+            270deg = to left ←
+            預設角度為 180 deg
+        */
+        .linear-gradient {
+            /* 下面為縮寫寫法 */
+            /* 預設角度為 180 deg */
+            background-image: linear-gradient(red, yellow, white);
+            /* 調整角度： */
+            background-image: linear-gradient(90deg, red, yellow, white);
+            /* 加上漸層站點（漸層渲染的百分比）*/
+            background-image: linear-gradient(45deg, #fff 0%, lightblue 25%, #fff 50%, lightblue 75%, #fff 100%);
+            /* 0~50%是白色、50~100%是黑色（呈現一半黑一半白） */
+            /* 針筒用此方式去畫 */
+            background-image: linear-gradient(90deg, #fff 50%, #000 50%);
+            /* 上一行的縮寫如下 */
+            background: linear-gradient(90deg, #fff 50%, #000 50%) repeat-x left top/10px 10px
+        }
+
+        /* 放射漸層 background-image: radial-gradient(顏色,顏色…)*/
+        .radial-gradient {
+            background-image: radial-gradient(white, #ffa, pink);
+            /* 站點 */
+            background-image: radial-gradient(white 0%, #ffa 10%, pink 100%);
+        }
+
+        /* 背景圖、漸層組合使用方法（因為漸層也是背景圖 )*/
+        .half-opacity {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url("https://picsum.photos/600/600/?random=10")
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 輸入.box.bg-color會得到<div class="box bg-color"></div> -->
+    <!-- class後面綠色字是class名稱 -->
+    <div class="box bg-color">background-color</div>
+    <div class="box bg-img">background-image</div>
+    <div class="box bg-img bg-repeat-x">background-repeat-x</div>
+    <div class="box bg-img bg-repeat-y">background-repeat-y</div>
+    <div class="box bg-img bg-no-repeat">background-no-repeat</div>
+    <div class="box bg-size">background-size</div>
+    <div class="box bg-img bg-no-repeat bg-position">background-position</div>
+    <div class="pikachu">皮卡丘</div>
+    <div class="box bg-abbr">縮寫版</div>
+    <div class="box bg-three">多張背景</div>
+    <div class="box linear-gradient">線性漸層</div>
+    <div class="box radial-gradient">放射漸層</div>
+    <div class="box half-opacity">半透明顏色背景</div>
+</body>
+
+</html>
